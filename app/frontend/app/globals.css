@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #09090b;
+  --foreground: #fafafa;
+  --card: #121215;
+  --card-hover: #18181c;
+  --border: #27272a;
+  --accent: #6366f1;
+  --accent-hover: #4f46e5;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+@layer utilities {
+  .gradient-text {
+    @apply bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent;
+  }
+  
+  .glass-card {
+    @apply bg-zinc-900/60 backdrop-blur-md border border-zinc-800/80 rounded-2xl shadow-xl;
+  }
+}
+
+/* Two-handle range slider (start / end of the part to clip) */
+.dual-range input[type="range"] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  margin: 0;
+  background: transparent;
+  pointer-events: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.dual-range input[type="range"]::-webkit-slider-runnable-track { background: transparent; height: 24px; }
+.dual-range input[type="range"]::-moz-range-track { background: transparent; }
+.dual-range input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  pointer-events: auto;
+  width: 18px;
+  height: 18px;
+  margin-top: 3px;
+  border-radius: 9999px;
+  background: #fff;
+  border: 3px solid #6366f1;
+  cursor: grab;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+.dual-range input[type="range"]::-moz-range-thumb {
+  pointer-events: auto;
+  width: 14px;
+  height: 14px;
+  border-radius: 9999px;
+  background: #fff;
+  border: 3px solid #6366f1;
+  cursor: grab;
+}
+.dual-range input[type="range"]:focus-visible::-webkit-slider-thumb { outline: 2px solid #a5b4fc; outline-offset: 2px; }
