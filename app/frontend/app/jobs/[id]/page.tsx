@@ -60,7 +60,7 @@ export default function JobStatusPage() {
     return (
       <div className="max-w-md mx-auto glass-card p-6 text-center space-y-4">
         <AlertCircle className="w-10 h-10 text-rose-500 mx-auto" />
-        <h2 className="text-lg font-bold text-zinc-200">Processing Failed</h2>
+        <h2 className="text-lg font-bold text-zinc-200">{job?.not_found ? "Job not found" : "Processing Failed"}</h2>
         <p className="text-xs text-zinc-400">{job?.error || (error as any)?.message || "An unexpected error occurred."}</p>
         <button
           onClick={() => router.push("/")}

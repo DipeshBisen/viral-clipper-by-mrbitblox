@@ -94,6 +94,24 @@ export async function GET(req: NextRequest) {
     }
   }
 
+  // 4. Deleted or unknown job: no record here and no files on disk. A real new job always
+  //    has backend/data/<id> by now (the submit route / backend creates it before returning),
+  //    so stop the page from polling "Initializing..." forever.
+  if (
+    !job &&
+    !fs.existsSync(path.join(backendDir, "data", jobId)) &&
+    !fs.existsSync(path.join(backendDir, "output", jobId))
+  ) {
+    return NextResponse.json({
+      status: "failed",
+      not_found: true,
+      stage: "Not found",
+      progress: 0,
+      clips: [],
+      error: "This job no longer exists. Its files may have been deleted. Start a new job from the home page.",
+    });
+  }
+
   if (!job) {
     return NextResponse.json({
       status: "processing",

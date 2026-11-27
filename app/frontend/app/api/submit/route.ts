@@ -111,6 +111,7 @@ export async function POST(req: NextRequest) {
       const child = spawn("python", args, {
         cwd: backendDir,
         detached: true,
+        windowsHide: true,
         stdio: ["ignore", logFd, logFd],
       });
       child.unref();

@@ -31,6 +31,7 @@ export function startBackend(): void {
   const child = spawn("python", [path.join(backendDir, "server.py")], {
     cwd: backendDir,
     detached: true,
+    windowsHide: true,
     stdio: ["ignore", logFd, logFd],
     env: { ...process.env, PYTHONIOENCODING: "utf-8" },
   });

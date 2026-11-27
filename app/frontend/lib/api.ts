@@ -75,6 +75,7 @@ export interface JobStatus {
   progress?: number;
   clips?: ClipResult[];
   error?: string;
+  not_found?: boolean;
   created_at?: string;
 }
 

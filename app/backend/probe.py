@@ -11,6 +11,7 @@ for stream in (sys.stdout, sys.stderr):
     except Exception:
         pass
 
+import nowindow  # noqa: E402,F401  (Windows: no pop-up terminal for yt-dlp)
 from pipeline.download import probe_source  # noqa: E402
 
 if __name__ == "__main__":

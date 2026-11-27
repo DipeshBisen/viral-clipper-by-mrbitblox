@@ -34,7 +34,7 @@ export async function GET(req: NextRequest) {
     execFile(
       "python",
       [script, source],
-      { cwd: backendDir, timeout: 120_000, maxBuffer: 4 * 1024 * 1024, env: { ...process.env, PYTHONIOENCODING: "utf-8" } },
+      { cwd: backendDir, windowsHide: true, timeout: 120_000, maxBuffer: 4 * 1024 * 1024, env: { ...process.env, PYTHONIOENCODING: "utf-8" } },
       (err, stdout) => {
         try {
           const data = JSON.parse(stdout.trim().split("\n").pop() || "{}");

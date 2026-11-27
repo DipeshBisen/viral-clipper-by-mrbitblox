@@ -18,6 +18,7 @@ import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
+import nowindow  # noqa: F401  (Windows: no pop-up terminal per ffmpeg / yt-dlp call)
 import config
 from pipeline.download import download_video
 from pipeline.transcribe import transcribe_video
